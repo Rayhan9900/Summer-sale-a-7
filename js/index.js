@@ -107,21 +107,23 @@ document.getElementById('btn-discount').addEventListener('click', function () {
 
 
 const totalPrice = document.getElementById('total-price');
-const buttonSubmit = document.getElementById('buttonSubmit');
+const buttonSubmit = document.getElementById('purchase');
 
-totalPrice.addEventListener('input', function () {
-    const total = parseFloat(totalPrice.value);
+function enableButtonIfNeeded() {
+    const total = parseFloat(totalPrice.textContent);
 
     if (total > 0) {
         buttonSubmit.removeAttribute('disabled');
     } else {
         buttonSubmit.setAttribute('disabled', 'disabled');
     }
-});
+}
 
 document.getElementById('purchase').addEventListener('click', function () {
-    alert('Congratulation');
+    alert('CONGRATULATION!!');
 })
 
+enableButtonIfNeeded()
 
+totalPrice.addEventListener('DOMSubtreeModified', enableButtonIfNeeded)
 
